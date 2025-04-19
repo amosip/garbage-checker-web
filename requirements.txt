@@ -1,0 +1,6 @@
+Flask
+PyMuPDF
+Werkzeug
+Jinja2
+requests
+python-dotenv
