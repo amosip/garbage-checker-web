@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garbage Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Garbage Checker</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="pdf_file">Upload PDF File:</label>
+            <input type="file" id="pdf_file" name="pdf_file" accept=".pdf" required>
+            
+            <h2>Configuration Options</h2>
+            <label for="entropy_threshold">Entropy Threshold:</label>
+            <input type="number" id="entropy_threshold" name="entropy_threshold" value="3.5" step="0.1" required>
+            
+            <label for="line_length_threshold">Average Line Length Threshold:</label>
+            <input type="number" id="line_length_threshold" name="line_length_threshold" value="20" required>
+            
+            <label for="non_alpha_ratio">Non-Alphanumeric Ratio Threshold:</label>
+            <input type="number" id="non_alpha_ratio" name="non_alpha_ratio" value="0.5" step="0.1" required>
+            
+            <button type="submit">Check PDF</button>
+        </form>
+        <div id="results">
+            {% if results %}
+                <h2>Results</h2>
+                <ul>
+                    {% for file in results %}
+                        <li>{{ file }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
