@@ -1,4 +1,10 @@
 class Config:
+    # Default configuration values - Use uppercase for Flask convention
+    MIN_TEXT_LENGTH = 100
+    ENTROPY_THRESHOLD = 3.5
+    LINE_LENGTH_THRESHOLD = 20
+    NON_ALPHA_RATIO = 0.5
+
     def __init__(self):
         self.min_text_length = 100
         self.avg_line_length_threshold = 20
